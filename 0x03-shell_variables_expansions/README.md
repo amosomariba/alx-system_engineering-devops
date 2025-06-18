@@ -86,3 +86,18 @@ This script displays all shell variables, including local variables, environment
 
 **Note:**  
 The output includes both user-defined and system variables, as well as shell functions.
+
+# 6-create_local_variable
+
+This script creates a local shell variable named `BEST` and assigns it the value `School`.
+
+## How it works
+
+- It defines the variable with the line:
+  ```bash
+  BEST=School
+  ```
+- This variable is available only in the current shell session and is not exported to child processes.
+
+**Note:**  
+To access the value, use `$BEST` in the shell after running the script.
