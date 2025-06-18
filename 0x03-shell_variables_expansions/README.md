@@ -59,3 +59,19 @@ If your `PATH` contains 5 directories, the script will output:
 ```
 5
 ```
+
+# 4-global_variables
+
+This script displays all the environment variables currently set in the shell.
+
+## How it works
+
+- It uses the `printenv` command to list all global (environment) variables and their values.
+
+**Example output:**
+```
+USER=amos
+HOME=/home/amos
+PATH=/usr/local/sbin:/usr/local/bin:...
+...
+```
