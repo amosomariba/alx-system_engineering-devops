@@ -116,3 +116,23 @@ This script creates a global (environment) variable named `BEST` and assigns it 
 
 **Note:**  
 To access the value, use `$BEST` in the shell or in any subprocess after running the script.
+
+# 8-true_knowledge
+
+This script prints the result of adding the value of the `TRUEKNOWLEDGE` variable to 128.
+
+## How it works
+
+- It uses arithmetic expansion to calculate `128 + TRUEKNOWLEDGE`:
+  ```bash
+  echo $((128 + TRUEKNOWLEDGE))
+  ```
+- `TRUEKNOWLEDGE` should be set as an environment or shell variable before running the script.
+- If `TRUEKNOWLEDGE` is not set, it is treated as 0.
+
+**Example usage:**
+```bash
+export TRUEKNOWLEDGE=10
+./8-true_knowledge
+# Output: 138
+```
