@@ -28,3 +28,34 @@ This script prints a personalized greeting to the user running the script.
 ```
 hello amos
 ```
+
+# 2-path
+
+This script adds the `/action` directory to the end of the system's `PATH` environment variable.
+
+## How it works
+
+- It uses the `export` command to update the `PATH` variable:
+  ```bash
+  export PATH="$PATH:/action"
+  ```
+- This allows you to run executable files located in `/action` from anywhere in the terminal.
+
+**Note:**  
+This change only affects the current shell session.
+
+# 3-paths
+
+This script counts and displays the number of directories listed in the system's `PATH` environment variable.
+
+## How it works
+
+- It prints the value of `$PATH`.
+- It replaces each colon (`:`) with a newline to separate the directories.
+- It counts the number of non-empty lines (i.e., directories) using `grep -c .`.
+
+**Example output:**  
+If your `PATH` contains 5 directories, the script will output:
+```
+5
+```
