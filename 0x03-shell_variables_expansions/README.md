@@ -101,3 +101,18 @@ This script creates a local shell variable named `BEST` and assigns it the value
 
 **Note:**  
 To access the value, use `$BEST` in the shell after running the script.
+
+# 7-create_global_variable
+
+This script creates a global (environment) variable named `BEST` and assigns it the value `School`.
+
+## How it works
+
+- It uses the `export` command to set the variable:
+  ```bash
+  export BEST=School
+  ```
+- This makes `BEST` available to the current shell session and any child processes started from it.
+
+**Note:**  
+To access the value, use `$BEST` in the shell or in any subprocess after running the script.
