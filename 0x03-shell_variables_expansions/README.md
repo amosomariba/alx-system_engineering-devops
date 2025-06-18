@@ -75,3 +75,14 @@ HOME=/home/amos
 PATH=/usr/local/sbin:/usr/local/bin:...
 ...
 ```
+
+# 5-local_variables
+
+This script displays all shell variables, including local variables, environment variables, and shell functions.
+
+## How it works
+
+- It uses the `set` command, which lists all variables and functions currently defined in the shell session.
+
+**Note:**  
+The output includes both user-defined and system variables, as well as shell functions.
