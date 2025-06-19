@@ -136,3 +136,40 @@ export TRUEKNOWLEDGE=10
 ./8-true_knowledge
 # Output: 138
 ```
+
+# 9-divide_and_rule
+
+This script calculates the result of dividing the value of the `POWER` environment variable by the value of the `DIVIDE` environment variable and prints the result.
+
+## Usage
+
+1. Make sure the script has execute permissions:
+   ```bash
+   chmod +x 9-divide_and_rule
+   ```
+
+2. Set the required environment variables before running the script:
+   ```bash
+   export POWER=20
+   export DIVIDE=5
+   ```
+
+3. Run the script:
+   ```bash
+   ./9-divide_and_rule
+   ```
+
+## Notes
+
+- Both `POWER` and `DIVIDE` must be set to integer values.
+- If either variable is unset or not an integer, the script may output an error or unexpected result.
+- Division by zero will result in an error.
+
+## Example
+
+```bash
+export POWER=100
+export DIVIDE=4
+./9-divide_and_rule
+# Output: 25
+```
