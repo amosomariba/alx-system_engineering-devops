@@ -319,3 +319,35 @@ export NUM=7.456
 ./13-print_float
 # Output: 7.46
 ```
+# 100-decimal_to_hexadecimal
+
+This script converts a decimal number stored in the `DECIMAL` environment variable to its hexadecimal representation and prints the result in lowercase.
+
+## Usage
+
+1. Make the script executable:
+   ```bash
+   chmod +x 100-decimal_to_hexadecimal
+   ```
+
+2. Set the `DECIMAL` environment variable to a valid decimal number:
+   ```bash
+   export DECIMAL=255
+   ```
+
+3. Run the script:
+   ```bash
+   ./100-decimal_to_hexadecimal
+   ```
+
+## Output
+
+- The script prints the hexadecimal equivalent of the decimal number in lowercase.
+
+## Example
+
+```bash
+export DECIMAL=255
+./100-decimal_to_hexadecimal
+# Output: ff
+```
