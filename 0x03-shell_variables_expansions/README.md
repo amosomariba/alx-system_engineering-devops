@@ -243,3 +243,53 @@ export BINARY=1101
 ./11-binary_to_decimal
 # Output: 13
 ```
+
+# 12-combinations
+
+This script generates and prints all possible two-letter combinations using lowercase letters from `a` to `z`, except for the combination `oo`.
+
+## Usage
+
+1. Make the script executable:
+   ```bash
+   chmod +x 12-combinations
+   ```
+
+2. Run the script:
+   ```bash
+   ./12-combinations
+   ```
+
+## Output
+
+- Each combination is printed on a new line.
+- The combination `oo` is excluded from the output.
+
+## Example Output
+
+```
+aa
+ab
+ac
+...
+on
+op
+oq
+or
+os
+ot
+ou
+ov
+ow
+ox
+oy
+oz
+pa
+...
+oz
+pa
+...
+zz
+```
+
+*(All combinations except `oo` will be listed.)*
