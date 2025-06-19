@@ -243,10 +243,15 @@ export BINARY=1101
 ./11-binary_to_decimal
 # Output: 13
 ```
-
 # 12-combinations
 
-This script generates and prints all possible two-letter combinations using lowercase letters from `a` to `z`, except for the combination `oo`.
+This script prints all possible two-letter combinations of lowercase letters from `a` to `z`, except for the combination `oo`.
+
+## How It Works
+
+- Uses Bash brace expansion to generate all two-letter combinations (`{a..z}{a..z}`).
+- Converts the output to one combination per line.
+- Excludes the combination `oo` from the output.
 
 ## Usage
 
@@ -262,10 +267,10 @@ This script generates and prints all possible two-letter combinations using lowe
 
 ## Output
 
-- Each combination is printed on a new line.
-- The combination `oo` is excluded from the output.
+- Each valid two-letter combination is printed on a new line.
+- The combination `oo` is omitted.
 
-## Example Output
+## Example
 
 ```
 aa
@@ -274,22 +279,43 @@ ac
 ...
 on
 op
-oq
-or
-os
-ot
-ou
-ov
-ow
-ox
-oy
-oz
-pa
 ...
 oz
 pa
 ...
 zz
 ```
-
 *(All combinations except `oo` will be listed.)*
+
+# 13-print_float
+
+This script prints the value of the `NUM` environment variable as a floating-point number with two decimal places.
+
+## Usage
+
+1. Make the script executable:
+   ```bash
+   chmod +x 13-print_float
+   ```
+
+2. Set the `NUM` environment variable to a valid number:
+   ```bash
+   export NUM=3.14159
+   ```
+
+3. Run the script:
+   ```bash
+   ./13-print_float
+   ```
+
+## Output
+
+- The script prints the value of `NUM` rounded to two decimal places.
+
+## Example
+
+```bash
+export NUM=7.456
+./13-print_float
+# Output: 7.46
+```
