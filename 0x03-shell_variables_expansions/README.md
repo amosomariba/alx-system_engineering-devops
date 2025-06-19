@@ -351,3 +351,97 @@ export DECIMAL=255
 ./100-decimal_to_hexadecimal
 # Output: ff
 ```
+
+# 101-rot13
+
+This script encodes or decodes input text using the ROT13 cipher.
+
+## How It Works
+
+- The script uses the `tr` command to perform ROT13 transformation, which shifts each letter by 13 places in the alphabet.
+- Both uppercase and lowercase letters are supported.
+- Non-alphabetic characters are not changed.
+
+## Usage
+
+1. Make the script executable:
+   ```bash
+   chmod +x 101-rot13
+   ```
+
+2. Provide input to the script using echo and a pipe, or by typing directly and pressing `Ctrl+D` to end input:
+   ```bash
+   echo "Hello, World!" | ./101-rot13
+   ```
+
+   or
+
+   ```bash
+   ./101-rot13
+   Type your text here
+   [Press Ctrl+D]
+   ```
+
+## Example
+
+```bash
+echo "Hello, World!" | ./101-rot13
+# Output: Uryyb, Jbeyq!
+```
+
+## Notes
+
+- Running the script twice on the same input will return the original text.
+
+# 102-odd
+
+This script prints only the odd-numbered lines from its input.
+
+## How It Works
+
+- Uses `awk` to filter and display lines where the line number (`NR`) is odd (`NR % 2 == 1`).
+
+## Usage
+
+1. Make the script executable:
+   ```bash
+   chmod +x 102-odd
+   ```
+
+2. Provide input to the script using a pipe or input redirection. For example:
+   ```bash
+   cat filename.txt | ./102-odd
+   ```
+
+   or
+
+   ```bash
+   ./102-odd < filename.txt
+   ```
+
+3. You can also type input directly and press `Ctrl+D` to end:
+   ```bash
+   ./102-odd
+   line1
+   line2
+   line3
+   [Press Ctrl+D]
+   ```
+
+## Example
+
+Input:
+```
+a
+b
+c
+d
+e
+```
+
+Output:
+```
+a
+c
+e
+```
