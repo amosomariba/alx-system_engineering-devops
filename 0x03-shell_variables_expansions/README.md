@@ -399,7 +399,8 @@ This script prints only the odd-numbered lines from its input.
 
 ## How It Works
 
-- Uses `awk` to filter and display lines where the line number (`NR`) is odd (`NR % 2 == 1`).
+- Reads input line by line.
+- Prints lines with odd numbers (1st, 3rd, 5th, etc.).
 
 ## Usage
 
@@ -408,13 +409,11 @@ This script prints only the odd-numbered lines from its input.
    chmod +x 102-odd
    ```
 
-2. Provide input to the script using a pipe or input redirection. For example:
+2. Provide input using a pipe or input redirection:
    ```bash
    cat filename.txt | ./102-odd
    ```
-
    or
-
    ```bash
    ./102-odd < filename.txt
    ```
