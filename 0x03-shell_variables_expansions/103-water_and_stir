@@ -1,0 +1,2 @@
+#!/bin/bash
+awk -v w=$(echo "$WATER" | tr 'water' 01234) -v s=$(echo "$STIR" | tr -d '.' | tr 'stir' 0123) '{n=w+s; b="bestchol"; r=""; while(n){r=substr(b,n%9+1,1) r; n=int(n/9)} print r}'

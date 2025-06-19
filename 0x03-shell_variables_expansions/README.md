@@ -444,3 +444,46 @@ a
 c
 e
 ```
+
+# 103-water_and_stir
+
+This script performs a custom transformation using the values of the `WATER` and `STIR` environment variables and prints a result based on a specific algorithm.
+
+## How It Works
+
+- Converts the characters in `WATER` to digits (`w`, `a`, `t`, `e`, `r` → `0`, `1`, `2`, `3`, `4`).
+- Converts the characters in `STIR` to digits (`s`, `t`, `i`, `r` → `0`, `1`, `2`, `3`) and removes any dots.
+- Sums the numeric values of the transformed `WATER` and `STIR`.
+- Uses the sum to generate a string from the word "bestchol" using a custom base-9 conversion.
+
+## Usage
+
+1. Make the script executable:
+   ```bash
+   chmod +x 103-water_and_stir
+   ```
+
+2. Set the `WATER` and `STIR` environment variables:
+   ```bash
+   export WATER="water"
+   export STIR="stir"
+   ```
+
+3. Run the script:
+   ```bash
+   ./103-water_and_stir
+   ```
+
+## Example
+
+```bash
+export WATER="water"
+export STIR="stir"
+./103-water_and_stir
+# Output: school
+```
+
+## Notes
+
+- The script expects `WATER` and `STIR` to contain only the specified characters.
+- The output is determined by the custom logic in the script.
