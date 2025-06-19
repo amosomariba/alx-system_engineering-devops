@@ -173,3 +173,73 @@ export DIVIDE=4
 ./9-divide_and_rule
 # Output: 25
 ```
+
+# 10-love_exponent_breath
+
+This script calculates the value of the `BREATH` environment variable raised to the power of the `LOVE` environment variable and prints the result.
+
+## Usage
+
+1. Make the script executable:
+   ```bash
+   chmod +x 10-love_exponent_breath
+   ```
+
+2. Set the required environment variables:
+   ```bash
+   export BREATH=2
+   export LOVE=3
+   ```
+
+3. Run the script:
+   ```bash
+   ./10-love_exponent_breath
+   ```
+
+## Notes
+
+- Both `BREATH` and `LOVE` must be set to integer values.
+- If either variable is unset or not an integer, the script may output an error or unexpected result.
+
+## Example
+
+```bash
+export BREATH=5
+export LOVE=2
+./10-love_exponent_breath
+# Output: 25
+```
+
+# 11-binary_to_decimal
+
+This script converts a binary number stored in the `BINARY` environment variable to its decimal equivalent and prints the result.
+
+## Usage
+
+1. Make the script executable:
+   ```bash
+   chmod +x 11-binary_to_decimal
+   ```
+
+2. Set the `BINARY` environment variable to a valid binary number (containing only 0s and 1s):
+   ```bash
+   export BINARY=1011
+   ```
+
+3. Run the script:
+   ```bash
+   ./11-binary_to_decimal
+   ```
+
+## Notes
+
+- The `BINARY` variable must contain a valid binary number.
+- If `BINARY` is unset or contains invalid characters, the script may output an error or unexpected result.
+
+## Example
+
+```bash
+export BINARY=1101
+./11-binary_to_decimal
+# Output: 13
+```
