@@ -1,3 +1,2 @@
 #!/bin/bash
-echo "WATER:" $(echo $WATER | tr 'water' 01234)
-echo "STIR:" $(echo $STIR | tr -d . | tr 'stir' 0123)
+printf "%o\n" $(( $( printf "%d\n" "'$(echo "$WATER" | tr 'water' '01234')" 2>/dev/null || echo "0" ) + $( printf "%d\n" "'$(echo "$STIR" | tr 'stir.' '01234')" 2>/dev/null || echo "0" ) )) | tr '01234567' 'bestchol'
