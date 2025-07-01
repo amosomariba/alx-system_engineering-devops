@@ -31,3 +31,33 @@ $ ./0-use_a_private_key
 
 This will open an SSH session to the server.
 
+# 1-create_ssh_key_pair
+
+This script generates a new SSH key pair for secure authentication.
+
+## Description
+
+- Uses `ssh-keygen` to create a 4096-bit RSA key pair.
+- The key pair is named `school`.
+- The private key is protected with the passphrase `betty`.
+
+## Usage
+
+```bash
+./1-create_ssh_key_pair
+```
+
+After running, you will have two files in your current directory:
+- `school` (private key)
+- `school.pub` (public key)
+
+## Requirements
+
+- Bash shell
+- OpenSSH client (`ssh-keygen` command)
+
+## Notes
+
+- The passphrase for the private key is set to `betty`.
+- Keep your private key secure and never share it.
+
