@@ -61,3 +61,41 @@ After running, you will have two files in your current directory:
 - The passphrase for the private key is set to `betty`.
 - Keep your private key secure and never share it.
 
+# 2-ssh_config
+
+This file is an SSH client configuration that simplifies connecting to a remote server.
+
+## Description
+
+- Defines a host alias `myserver` for easy SSH access.
+- Specifies the server's IP address, user, and private key for authentication.
+- Disables password authentication for improved security.
+
+## Configuration Details
+
+```ssh-config
+Host myserver
+    HostName 98.98.98.98
+    User ubuntu
+    IdentityFile ~/.ssh/school
+    PasswordAuthentication no
+```
+
+## Usage
+
+After placing this configuration in your SSH config file (usually `~/.ssh/config`), connect to the server using:
+
+```bash
+ssh myserver
+```
+
+## Requirements
+
+- OpenSSH client
+- Private key at `~/.ssh/school` with correct permissions
+
+## Notes
+
+- Make sure your private key exists and is secured (`chmod 600 ~/.ssh/school`).
+- This configuration disables password authentication; only key-based login is allowed.
+
