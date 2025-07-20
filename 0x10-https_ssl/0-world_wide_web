@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+# SC2086 ignored as required
+
+# Function to fetch and display DNS info for a given subdomain
+get_subdomain_info() {
+    local domain=$1
+    local sub=$2
+    local full_domain="${sub}.${domain}"
+    local result=$(dig ${full_domain} | grep -A1 "ANSWER SECTION:" | tail -n1)
+
+    # Parse using awk
+    record_type=$(echo "$result" | awk '{print $4}')
+    destination=$(echo "$result" | awk '{print $5}')
+
+    echo "The subdomain ${sub} is a ${record_type} record and points to ${destination}"
+}
+
+# Main
+domain=$1
+sub=$2
+
+if [ -z "$domain" ]; then
+    echo "Usage: $0 domain [subdomain]"
+    exit 1
+fi
+
+if [ -n "$sub" ]; then
+    get_subdomain_info $domain $sub
+else
+    for s in www lb-01 web-01 web-02
+    do
+        get_subdomain_info $domain $s
+    done
+fi
