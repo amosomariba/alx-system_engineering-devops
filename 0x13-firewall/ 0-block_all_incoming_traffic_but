@@ -1,24 +1,31 @@
-# 1. Install UFW (if not already installed)
+#!/bin/bash
+
+# Exit immediately if any command fails
+set -e
+
+echo "Updating package list..."
 sudo apt update
+
+echo " Installing ufw..."
 sudo apt install ufw -y
 
-# 2. Deny all incoming traffic by default
+echo " Setting default policy: deny all incoming..."
 sudo ufw default deny incoming
 
-# 3. Allow all outgoing traffic by default
+echo " Setting default policy: allow all outgoing..."
 sudo ufw default allow outgoing
 
-# 4. Allow SSH (port 22) for remote access
+echo " Allowing SSH (port 22)..."
 sudo ufw allow 22/tcp
 
-# 5. Allow HTTP (port 80)
+echo " Allowing HTTP (port 80)..."
 sudo ufw allow 80/tcp
 
-# 6. Allow HTTPS (port 443)
+echo " Allowing HTTPS (port 443)..."
 sudo ufw allow 443/tcp
 
-# 7. Enable the firewall (you’ll be warned it may disrupt SSH if not allowed)
-sudo ufw enable
+echo "Enabling ufw firewall..."
+sudo ufw --force enable
 
-# 8. Check the status and rules
+echo " Firewall rules:"
 sudo ufw status verbose
