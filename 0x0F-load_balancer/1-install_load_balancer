@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+# Script to install and configure HAProxy as a load balancer (lb-01)
+# Requirements: Ubuntu 20.04+ and two web servers (web-01 and web-02)
+# Ignore SC2154 for shellcheck
+
+set -e
+
+echo "Updating packages..."
+sudo apt-get update -y
+
+echo "Installing HAProxy..."
+sudo apt-get install -y haproxy
+
+echo "Enabling HAProxy init script..."
+sudo sed -i 's/ENABLED=0/ENABLED=1/' /etc/default/haproxy
+
+echo "Backing up original HAProxy config..."
+sudo cp /etc/haproxy/haproxy.cfg /etc/haproxy/haproxy.cfg.bak
+
+echo "Configuring HAProxy for roundrobin load balancing..."
+
+sudo tee /etc/haproxy/haproxy.cfg > /dev/null <<'EOF'
+global
+    log /dev/log    local0
+    log /dev/log    local1 notice
+    chroot /var/lib/haproxy
+    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+    stats timeout 30s
+    user haproxy
+    group haproxy
+    daemon
+
+defaults
+    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    timeout connect 5s
+    timeout client  50s
+    timeout server  50s
+    errorfile 400 /etc/haproxy/errors/400.http
+    errorfile 403 /etc/haproxy/errors/403.http
+    errorfile 408 /etc/haproxy/errors/408.http
+    errorfile 500 /etc/haproxy/errors/500.http
+    errorfile 502 /etc/haproxy/errors/502.http
+    errorfile 503 /etc/haproxy/errors/503.http
+    errorfile 504 /etc/haproxy/errors/504.http
+
+frontend http_front
+    bind *:80
+    default_backend http_back
+
+backend http_back
+    balance roundrobin
+    server web-01 192.168.56.10:80 check
+    server web-02 192.168.56.11:80 check
+EOF
+
+echo "Restarting HAProxy..."
+sudo service haproxy restart
+
+echo "HAProxy load balancer is now configured and running."
