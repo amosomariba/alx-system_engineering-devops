@@ -33,3 +33,22 @@ Use the `0-transfer_file` script to securely copy a file to a remote server.
 
 ## License
 This project is for educational purposes.
+
+
+# Install and Configure Nginx Web Server
+
+## Description
+
+This project includes a Bash script `1-install_nginx_web_server` that automates the installation and basic configuration of the **Nginx** web server on an Ubuntu machine.
+
+After running the script, the web server will:
+- Be installed and listening on port `80`
+- Serve a page containing the string `Hello World!` when accessed at its root (`/`)
+
+## Requirements
+
+- Ubuntu 16.04 LTS server
+- Use `apt-get` with `-y` flag to automate installation without prompts
+- Do **not** use `systemctl` to restart or reload Nginx
+- The page at `http://localhost/` and `http://<your_server_ip>/` must return:
+
