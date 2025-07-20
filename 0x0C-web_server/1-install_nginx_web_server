@@ -1,12 +1,18 @@
 #!/usr/bin/env bash
-# Installs and configures Nginx to serve 'Hello World!' on port 80
+# Installs Nginx and configures it to return "Hello World!" at root path
 
-# Update package list and install nginx non-interactively
+# Update package list
 apt-get update -y
+
+# Install nginx without prompt
 apt-get install nginx -y
 
-# Replace default web page with 'Hello World!'
+# Replace default index page content with "Hello World!"
 echo "Hello World!" > /var/www/html/index.nginx-debian.html
 
-# Start nginx using service (not systemctl)
-service nginx start || /etc/init.d/nginx start
+# Start nginx (without systemctl)
+if command -v service &> /dev/null; then
+    service nginx start
+else
+    /etc/init.d/nginx start
+fi
