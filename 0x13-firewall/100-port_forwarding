@@ -1,0 +1,52 @@
+#!/bin/bash
+
+# Exit immediately if a command exits with a non-zero status
+set -e
+
+# Update and install ufw if not present
+echo "Installing ufw if not already installed..."
+sudo apt-get update
+sudo apt-get install -y ufw
+
+# Enable UFW and reset to default deny all incoming
+echo "Setting ufw default rules..."
+sudo ufw --force reset
+sudo ufw default deny incoming
+sudo ufw default allow outgoing
+
+# Allow SSH, HTTP, and HTTPS
+echo "Allowing necessary ports..."
+sudo ufw allow 22/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+
+# Configure port forwarding from 8080 to 80
+echo "Configuring port forwarding from 8080 to 80..."
+
+# Backup the original sysctl config
+sudo cp /etc/sysctl.conf /etc/sysctl.conf.bak
+
+# Enable IP forwarding
+sudo sed -i '/^#net.ipv4.ip_forward=1/c\net.ipv4.ip_forward=1' /etc/sysctl.conf
+sudo sysctl -p
+
+# Add port redirection rule to ufw's before.rules
+UFW_BEFORE_RULES="/etc/ufw/before.rules"
+sudo cp $UFW_BEFORE_RULES ${UFW_BEFORE_RULES}.bak
+
+# Insert redirection rule if not already present
+if ! grep -q "Redirect port 8080 to 80" $UFW_BEFORE_RULES; then
+  sudo sed -i '1i \
+# Redirect port 8080 to 80\n\
+*nat\n\
+:PREROUTING ACCEPT [0:0]\n\
+-A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80\n\
+COMMIT\n' $UFW_BEFORE_RULES
+fi
+
+# Enable the firewall
+echo "Enabling UFW..."
+sudo ufw --force enable
+
+echo "Firewall setup complete. Rules:"
+sudo ufw status verbose
